@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 986" font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#4a5568"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1180" height="986" fill="#ffffff"/>
+
+  <!-- ===================== HEADER ===================== -->
+  <text x="590" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1a202c">Explainable Traffic-Sign Classification — CNN + Logical Neural Network</text>
+  <text x="590" y="56" text-anchor="middle" font-size="13" fill="#4a5568">GTSRB · 43 classes · 49 human concepts · three ways an LNN explains the ResNet-18 CNN</text>
+
+  <rect x="30" y="74" width="150" height="52" rx="8" fill="#edf0f3" stroke="#718096"/>
+  <text x="105" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#2d3748">GTSRB image</text>
+  <text x="105" y="113" text-anchor="middle" font-size="11" fill="#4a5568">48×48 RGB</text>
+
+  <rect x="196" y="74" width="560" height="52" rx="8" fill="#fdf0d5" stroke="#d69e2e"/>
+  <text x="476" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#8a5a00">49 human concepts — 6 groups</text>
+  <text x="476" y="113" text-anchor="middle" font-size="11" fill="#8a5a00">shape · colour · content · digit · direction · symbol</text>
+
+  <rect x="772" y="74" width="378" height="52" rx="8" fill="#e6f4ea" stroke="#38a169"/>
+  <text x="961" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#22543d">LNN neuron = weighted Łukasiewicz AND</text>
+  <text x="961" y="113" text-anchor="middle" font-size="11" fill="#22543d">truth = clamp( 1 − Σ wₖ·(1 − litₖ) ),  wₖ ≥ 0 learned</text>
+
+  <!-- ===================== PANEL A : INTRINSIC ===================== -->
+  <rect x="30" y="146" width="1120" height="188" rx="10" fill="#f7fafc" stroke="#cbd5e0"/>
+  <text x="48" y="170" font-size="15" font-weight="700" fill="#1a202c">1 · Intrinsic hybrid (concept bottleneck) — explanation built into the classifier</text>
+
+  <rect x="48"  y="212" width="112" height="52" rx="8" fill="#edf0f3" stroke="#718096"/>
+  <text x="104" y="243" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2d3748">GTSRB image</text>
+  <rect x="200" y="212" width="150" height="52" rx="8" fill="#e3f0fb" stroke="#2b6cb0"/>
+  <text x="275" y="234" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a4971">ResNet-18</text>
+  <text x="275" y="251" text-anchor="middle" font-size="11" fill="#2b6cb0">backbone</text>
+  <rect x="392" y="212" width="176" height="52" rx="8" fill="#fdf0d5" stroke="#d69e2e"/>
+  <text x="480" y="234" text-anchor="middle" font-size="12.5" font-weight="600" fill="#8a5a00">Concept head</text>
+  <text x="480" y="251" text-anchor="middle" font-size="11" fill="#8a5a00">49 probs (sigmoid)</text>
+  <rect x="610" y="212" width="186" height="52" rx="8" fill="#e6f4ea" stroke="#38a169"/>
+  <text x="703" y="234" text-anchor="middle" font-size="12.5" font-weight="600" fill="#22543d">LNN reasoning layer</text>
+  <text x="703" y="251" text-anchor="middle" font-size="11" fill="#22543d">1 weighted-AND rule / class</text>
+  <rect x="838" y="212" width="150" height="52" rx="8" fill="#edf0f3" stroke="#718096"/>
+  <text x="913" y="234" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2d3748">Class +</text>
+  <text x="913" y="251" text-anchor="middle" font-size="11" fill="#4a5568">explanation</text>
+
+  <line x1="160" y1="238" x2="200" y2="238" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="350" y1="238" x2="392" y2="238" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="568" y1="238" x2="610" y2="238" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="796" y1="238" x2="838" y2="238" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="48" y="292" font-size="12" font-style="italic" fill="#2d3748">Reads back as logic:  “Stop”  ⇐  octagon(0.98)  ∧  red(0.97)  ∧  stop_text(0.93)</text>
+  <text x="48" y="312" font-size="11.5" fill="#4a5568">Evaluation: accuracy cost vs the plain CNN  ·  faithfulness (remove a concept → does the verdict change?)</text>
+
+  <rect x="1000" y="208" width="138" height="60" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-dasharray="4,3"/>
+  <text x="1069" y="233" text-anchor="middle" font-size="10.5" font-weight="600" fill="#2d3748">explanation is</text>
+  <text x="1069" y="249" text-anchor="middle" font-size="10.5" font-weight="600" fill="#2d3748">intrinsic</text>
+
+  <!-- ===================== PANEL B : SURROGATE ===================== -->
+  <rect x="30" y="348" width="1120" height="210" rx="10" fill="#f7fafc" stroke="#cbd5e0"/>
+  <text x="48" y="372" font-size="15" font-weight="700" fill="#1a202c">2 · Post-hoc surrogate — an LNN that explains a trained black-box CNN</text>
+
+  <rect x="48"  y="452" width="108" height="50" rx="8" fill="#edf0f3" stroke="#718096"/>
+  <text x="102" y="482" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3748">GTSRB image</text>
+  <rect x="196" y="440" width="182" height="74" rx="8" fill="#2d3748" stroke="#1a202c"/>
+  <text x="287" y="470" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">Frozen black-box</text>
+  <text x="287" y="488" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">ResNet-18 CNN</text>
+  <text x="287" y="504" text-anchor="middle" font-size="10" fill="#cbd5e0">weights frozen ❄</text>
+  <rect x="430" y="454" width="150" height="46" rx="8" fill="#fdf0d5" stroke="#d69e2e"/>
+  <text x="505" y="474" text-anchor="middle" font-size="12" font-weight="600" fill="#8a5a00">Concept probe</text>
+  <text x="505" y="490" text-anchor="middle" font-size="10.5" fill="#8a5a00">on frozen features</text>
+  <rect x="620" y="454" width="120" height="46" rx="8" fill="#e6f4ea" stroke="#38a169"/>
+  <text x="680" y="481" text-anchor="middle" font-size="12.5" font-weight="600" fill="#22543d">LNN</text>
+  <rect x="780" y="454" width="140" height="46" rx="8" fill="#edf0f3" stroke="#718096"/>
+  <text x="850" y="475" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3748">Class</text>
+  <text x="850" y="491" text-anchor="middle" font-size="10.5" fill="#4a5568">(logical rule)</text>
+  <rect x="780" y="392" width="140" height="42" rx="8" fill="#e3f0fb" stroke="#2b6cb0"/>
+  <text x="850" y="410" text-anchor="middle" font-size="12" font-weight="600" fill="#1a4971">CNN prediction</text>
+  <text x="850" y="426" text-anchor="middle" font-size="10.5" fill="#2b6cb0">(the black box's own)</text>
+
+  <line x1="156" y1="477" x2="196" y2="477" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="378" y1="477" x2="430" y2="477" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="404" y="470" text-anchor="middle" font-size="9.5" fill="#4a5568">features</text>
+  <line x1="580" y1="477" x2="620" y2="477" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="740" y1="477" x2="780" y2="477" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M287,440 V413 H780" fill="none" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="850" y1="434" x2="850" y2="454" stroke="#c53030" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+  <text x="862" y="448" font-size="10" font-weight="600" fill="#c53030">compare</text>
+
+  <rect x="952" y="440" width="186" height="74" rx="8" fill="#ffffff" stroke="#c53030" stroke-dasharray="4,3"/>
+  <text x="1045" y="463" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c53030">Fidelity</text>
+  <text x="1045" y="481" text-anchor="middle" font-size="10" fill="#4a5568">% of the CNN's decisions</text>
+  <text x="1045" y="495" text-anchor="middle" font-size="10" fill="#4a5568">the logic reproduces</text>
+  <text x="1045" y="509" text-anchor="middle" font-size="9.5" font-style="italic" fill="#718096">trained by distillation</text>
+
+  <text x="48" y="536" font-size="11.5" fill="#4a5568">The CNN is frozen, so the LNN can only <tspan font-weight="700" fill="#2d3748">explain</tspan> it, never change it — high fidelity ⇒ the black box is well captured by readable logic.</text>
+
+  <!-- ===================== PANEL C : LAYER BY LAYER (true 18 layers) ===================== -->
+  <rect x="30" y="572" width="1120" height="388" rx="10" fill="#f7fafc" stroke="#cbd5e0"/>
+  <text x="48" y="595" font-size="15" font-weight="700" fill="#1a202c">3 · Layer by layer — the actual 18 weight layers of ResNet-18</text>
+  <text x="48" y="614" font-size="11.5" fill="#4a5568">18 layers = 1 stem conv + 16 block convs (4 stages × 2 residual blocks × 2 convs) + 1 fully-connected. A concept probe + LNN taps each of the 17 conv layers; layer 18 (fc) is replaced by the deepest LNN.</text>
+
+  <!-- 18 numbered layer cells -->
+  <g font-size="13" font-weight="700">
+    <!-- conv layers 1-17 (blue) -->
+    <g>
+      <rect x="48"   y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="73"   y="655" text-anchor="middle" fill="#1a4971">1</text>
+      <rect x="108"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="133"  y="655" text-anchor="middle" fill="#1a4971">2</text>
+      <rect x="168"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="193"  y="655" text-anchor="middle" fill="#1a4971">3</text>
+      <rect x="228"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="253"  y="655" text-anchor="middle" fill="#1a4971">4</text>
+      <rect x="288"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="313"  y="655" text-anchor="middle" fill="#1a4971">5</text>
+      <rect x="348"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="373"  y="655" text-anchor="middle" fill="#1a4971">6</text>
+      <rect x="408"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="433"  y="655" text-anchor="middle" fill="#1a4971">7</text>
+      <rect x="468"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="493"  y="655" text-anchor="middle" fill="#1a4971">8</text>
+      <rect x="528"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="553"  y="655" text-anchor="middle" fill="#1a4971">9</text>
+      <rect x="588"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="613"  y="655" text-anchor="middle" fill="#1a4971">10</text>
+      <rect x="648"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="673"  y="655" text-anchor="middle" fill="#1a4971">11</text>
+      <rect x="708"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="733"  y="655" text-anchor="middle" fill="#1a4971">12</text>
+      <rect x="768"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="793"  y="655" text-anchor="middle" fill="#1a4971">13</text>
+      <rect x="828"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="853"  y="655" text-anchor="middle" fill="#1a4971">14</text>
+      <rect x="888"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="913"  y="655" text-anchor="middle" fill="#1a4971">15</text>
+      <rect x="948"  y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="973"  y="655" text-anchor="middle" fill="#1a4971">16</text>
+      <rect x="1008" y="630" width="50" height="38" rx="6" fill="#e3f0fb" stroke="#2b6cb0"/><text x="1033" y="655" text-anchor="middle" fill="#1a4971">17</text>
+    </g>
+    <!-- layer 18: fc (dark, replaced) -->
+    <rect x="1068" y="630" width="50" height="38" rx="6" fill="#2d3748" stroke="#1a202c"/><text x="1093" y="655" text-anchor="middle" fill="#ffffff">18</text>
+  </g>
+
+  <!-- probe/LNN taps under the 17 conv layers -->
+  <g stroke="#4a5568" stroke-width="1.4">
+    <line x1="73"   y1="668" x2="73"   y2="706"/>
+    <line x1="133"  y1="668" x2="133"  y2="706"/>
+    <line x1="193"  y1="668" x2="193"  y2="706"/>
+    <line x1="253"  y1="668" x2="253"  y2="706"/>
+    <line x1="313"  y1="668" x2="313"  y2="706"/>
+    <line x1="373"  y1="668" x2="373"  y2="706"/>
+    <line x1="433"  y1="668" x2="433"  y2="706"/>
+    <line x1="493"  y1="668" x2="493"  y2="706"/>
+    <line x1="553"  y1="668" x2="553"  y2="706"/>
+    <line x1="613"  y1="668" x2="613"  y2="706"/>
+    <line x1="673"  y1="668" x2="673"  y2="706"/>
+    <line x1="733"  y1="668" x2="733"  y2="706"/>
+    <line x1="793"  y1="668" x2="793"  y2="706"/>
+    <line x1="853"  y1="668" x2="853"  y2="706"/>
+    <line x1="913"  y1="668" x2="913"  y2="706"/>
+    <line x1="973"  y1="668" x2="973"  y2="706"/>
+    <line x1="1033" y1="668" x2="1033" y2="706"/>
+  </g>
+
+  <rect x="48" y="706" width="1010" height="40" rx="8" fill="#e6f4ea" stroke="#38a169"/>
+  <text x="553" y="731" text-anchor="middle" font-size="12.5" font-weight="600" fill="#22543d">concept probe → LNN after every conv layer  →  class prediction at that layer</text>
+
+  <!-- fc replaced by LNN -->
+  <path d="M1093,668 V690" stroke="#c53030" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="1093" y="704" text-anchor="middle" font-size="9.5" font-weight="600" fill="#c53030">= LNN (L17)</text>
+
+  <!-- stage brackets -->
+  <g stroke="#a0aec0" stroke-width="1.4" fill="none">
+    <path d="M108,760 V754 H338 V760"/>
+    <path d="M348,760 V754 H578 V760"/>
+    <path d="M588,760 V754 H818 V760"/>
+    <path d="M828,760 V754 H1058 V760"/>
+  </g>
+  <g font-size="11" fill="#4a5568" text-anchor="middle">
+    <text x="73"   y="775" font-weight="600">stem</text>
+    <text x="223"  y="775" font-weight="600">stage1 (layer1)</text>
+    <text x="463"  y="775" font-weight="600">stage2 (layer2)</text>
+    <text x="703"  y="775" font-weight="600">stage3 (layer3)</text>
+    <text x="943"  y="775" font-weight="600">stage4 (layer4)</text>
+    <text x="1093" y="775" font-weight="600" fill="#2d3748">fc</text>
+  </g>
+
+  <!-- emergence gradient -->
+  <line x1="108" y1="800" x2="1058" y2="800" stroke="#a0aec0" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="150" y="794" font-size="10" fill="#2b6cb0" font-weight="600">shape &amp; colour early</text>
+  <text x="583" y="794" text-anchor="middle" font-size="10" fill="#718096">concept emergence with depth</text>
+  <text x="1000" y="794" text-anchor="end" font-size="10" fill="#8a5a00" font-weight="600">digits &amp; symbols deep</text>
+
+  <!-- outputs chip -->
+  <rect x="48" y="818" width="520" height="120" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-dasharray="4,3"/>
+  <text x="64" y="840" font-size="11.5" font-weight="700" fill="#2d3748">Per-conv-layer outputs (17 layers)</text>
+  <text x="64" y="860" font-size="10.5" fill="#4a5568">• classification accuracy after each convolution</text>
+  <text x="64" y="878" font-size="10.5" fill="#4a5568">• concept-emergence heatmap (17 conv layers × 6 groups)</text>
+  <text x="64" y="896" font-size="10.5" fill="#4a5568">• per-image logical trace, one line per conv layer</text>
+  <text x="64" y="918" font-size="10.5" fill="#4a5568">• deep supervision: every conv layer trained to detect + reason</text>
+
+  <!-- trace example -->
+  <rect x="590" y="818" width="548" height="120" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-dasharray="4,3"/>
+  <text x="606" y="840" font-size="11.5" font-weight="700" fill="#2d3748">Example trace (the decision forming, layer by layer)</text>
+  <text x="606" y="861" font-size="10.5" fill="#4a5568">L1 (conv1 stem): edges → circle, red …</text>
+  <text x="606" y="879" font-size="10.5" fill="#4a5568">L9 (stage2): + white_background, has_digit → “prohibition sign”</text>
+  <text x="606" y="897" font-size="10.5" fill="#4a5568">L14 (stage4): + digit shape features …</text>
+  <text x="606" y="915" font-size="10.5" font-weight="600" fill="#22543d">L17 (final): + digit_50 → “Speed limit (50km/h)”</text>
+
+  <text x="590" y="976" text-anchor="middle" font-size="11" fill="#718096">All three paths share one 49-concept vocabulary and the same weighted-Łukasiewicz LNN neuron; concept labels are derived from GTSRB class labels.</text>
+</svg>

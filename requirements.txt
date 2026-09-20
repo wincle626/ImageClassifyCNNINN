@@ -1,0 +1,15 @@
+# Core pipeline (required)
+# For an NVIDIA GPU, install the CUDA build of torch/torchvision instead of the
+# default CPU wheels, e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# Verify with:  python run.py device
+torch>=2.1
+torchvision>=0.16
+numpy>=1.24
+pyyaml>=6.0
+tqdm>=4.65
+matplotlib>=3.7
+
+# Optional: IBM's Logical Neural Network library, only needed for the
+# pure-symbolic inference demo in src/symbolic.py.
+# lnn>=1.0

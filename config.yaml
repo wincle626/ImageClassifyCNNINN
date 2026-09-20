@@ -1,0 +1,29 @@
+# Configuration for the CNN + LNN explainable GTSRB classifier.
+# CLI flags (--epochs, --subset, ...) override these values.
+
+# --- data ---
+data_root: ./data          # GTSRB is downloaded here automatically
+subset_fraction: 1.0       # use a fraction of each split (e.g. 0.05) for quick runs
+batch_size: 128
+num_workers: 0             # keep 0 on Windows to avoid loader spawn issues
+download: true
+
+# --- model ---
+backbone: resnet18         # "resnet18" (main architecture) or "simple" (fast fallback)
+pretrained: true           # load ImageNet weights for resnet18
+small_input: false         # CIFAR-style 3x3 stem to preserve 48x48 resolution
+feature_dim: 256           # only used by the "simple" backbone
+temperature: 8.0           # scales LNN truth values [0,1] into logit range for CE
+
+# --- training ---
+epochs: 15
+lr: 0.001
+weight_decay: 0.0001
+concept_loss_weight: 1.0   # weight on BCE concept-detection loss
+class_loss_weight: 1.0     # weight on CE classification loss
+seed: 0
+device: auto               # auto | cuda | cuda:0 | cpu
+amp: true                  # mixed-precision training (only active on a CUDA GPU)
+
+# --- io ---
+out_dir: ./outputs

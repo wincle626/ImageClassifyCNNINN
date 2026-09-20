@@ -1,0 +1,71 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5126464845987412,
+      "test_acc": 0.930720506730008,
+      "seconds": 267.8
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.11110096228820783,
+      "test_acc": 0.9089469517022961,
+      "seconds": 280.6
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.07593491049902933,
+      "test_acc": 0.9563737133808393,
+      "seconds": 279.4
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.04569993225057741,
+      "test_acc": 0.9521773555027712,
+      "seconds": 277.9
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.025913144330362656,
+      "test_acc": 0.9683293745051464,
+      "seconds": 300.2
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.016646353286962297,
+      "test_acc": 0.973950910530483,
+      "seconds": 292.3
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.006968352765784607,
+      "test_acc": 0.9759303246239113,
+      "seconds": 282.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0038445227330567333,
+      "test_acc": 0.9759303246239113,
+      "seconds": 292.3
+    }
+  ],
+  "config": {
+    "data_root": "./data",
+    "subset_fraction": 1.0,
+    "batch_size": 128,
+    "num_workers": 0,
+    "download": true,
+    "backbone": "resnet18",
+    "pretrained": true,
+    "small_input": false,
+    "feature_dim": 256,
+    "temperature": 8.0,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "concept_loss_weight": 1.0,
+    "class_loss_weight": 1.0,
+    "seed": 0,
+    "out_dir": "./outputs"
+  }
+}
